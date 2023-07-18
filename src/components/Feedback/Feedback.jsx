@@ -21,18 +21,24 @@ state = {
     }
 
     countTotalFeedback() {
-        const { good, neutral, bad } = this.state;
-        return good + neutral + bad;
+        //const { good, neutral, bad } = this.state;
+        //return good + neutral + bad;
+        return Object.values(this.state).reduce((acc, number) => acc + number, 0);
     }
 
     countPositiveFeedbackPercentage() {
-        const { good, neutral } = this.state;
-        const total = this.countTotalFeedback();
-        if (!total) {
-            return 0;
-        }
-        const result = ((good + neutral) / total) * 100;
-        return Number(result.toFixed(2));
+        // const { good, neutral } = this.state;
+        // const total = this.countTotalFeedback();
+        // if (!total) {
+        //     return 0;
+        // }
+        // const result = ((good + neutral) / total) * 100;
+        // //return Number(result.toFixed(2));
+        // return Number(Math.trunc(result));
+
+        return Math.round(
+            (this.state.good * 100) / (this.countTotalFeedback() || 1)
+          );
     }
 
     render() {

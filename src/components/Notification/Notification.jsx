@@ -9,5 +9,5 @@ export default function Notification({message}) {
 
 
 Notification.protoType = {
-    "message": PropTypes.string.isRequired,
+    message: PropTypes.string.isRequired,
 };
